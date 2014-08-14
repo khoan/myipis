@@ -1,0 +1,14 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    cuba (3.2.0)
+      rack
+    cutest (1.2.1)
+    rack (1.5.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  cuba (~> 3.2.0)
+  cutest (~> 1.2.1)
