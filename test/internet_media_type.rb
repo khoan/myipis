@@ -1,0 +1,5 @@
+test 'supports application/json'
+test 'supports text/html as html5'
+test 'supports application/xml'
+test 'supports text/xml'
+test 'supports other mime type as text/plain'
