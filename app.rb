@@ -766,16 +766,21 @@ Cuba.define do
 
         <div class="block-group">
           <div class="block">
-            <div class="main box">
+            <div class="main box" data-ng-app="ip-clock">
               Your IP is
               <br>
               <h1 class="hug ip">
                 #{req.ip}
               </h1>
+              <time>
+                {{2+2}}
+                Sat, 16 Aug 2014 9:03pm
+              </time>
             </div>
           </div>
         </div>
 
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
       </body>
       </html>
       HTML
