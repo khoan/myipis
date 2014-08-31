@@ -782,9 +782,10 @@ Cuba.define do
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular.min.js"></script>
         <script>
           angular.module("clock", [])
-            .directive("myCurrentTime", ["$interval", function($interval) {
+            .directive("myCurrentTime", ["$interval", "dateFilter", function($interval, dateFilter) {
 
               return function link(scope, element, attributes) {
+                var format = "EEE, d MMM yyyy hh:mm:ss a Z";
                 var timeoutId = $interval(updateTime, 1000);
 
                 element.on("$destroy", function() {
@@ -792,7 +793,7 @@ Cuba.define do
                 });
 
                 function updateTime() {
-                  element.text((new Date).toLocaleString());
+                  element.text(dateFilter(new Date, format));
                 }
               }
             }]);
