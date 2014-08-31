@@ -766,21 +766,37 @@ Cuba.define do
 
         <div class="block-group">
           <div class="block">
-            <div class="main box" data-ng-app="ip-clock">
+            <div class="main box">
               Your IP is
               <br>
               <h1 class="hug ip">
                 #{req.ip}
               </h1>
-              <time>
-                {{2+2}}
-                Sat, 16 Aug 2014 9:03pm
+              <time ng-app="clock">
+                <my-current-time></my-current-time>
               </time>
             </div>
           </div>
         </div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular.min.js"></script>
+        <script>
+          angular.module("clock", [])
+            .directive("myCurrentTime", ["$interval", function($interval) {
+
+              return function link(scope, element, attributes) {
+                var timeoutId = $interval(updateTime, 1000);
+
+                element.on("$destroy", function() {
+                  $interval.cancel(timeoutId);
+                });
+
+                function updateTime() {
+                  element.text((new Date).toLocaleString());
+                }
+              }
+            }]);
+        </script>
       </body>
       </html>
       HTML
